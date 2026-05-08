@@ -80,6 +80,11 @@ const UNITS = [
         note: "Cornwallis's surrender to Washington effectively ends the Revolutionary War. The French alliance — ships and troops — proved decisive in the final siege."
       },
       {
+        year: '1781',
+        title: 'Articles of Confederation',
+        note: "Weak federal central government that will fail due to inability to tax, regulate trade, or repress rebellions."
+      },
+      {
         year: '1786',
         title: "Shays' Rebellion",
         note: "Indebted Massachusetts farmers revolt, exposing the weakness of the Articles of Confederation and galvanizing delegates to draft a stronger federal Constitution."
@@ -109,6 +114,11 @@ const UNITS = [
         year: '1820',
         title: 'Missouri Compromise',
         note: 'Admits Missouri as a slave state and Maine as a free state; bans slavery north of the 36°30′ line — a temporary fix to sectional tensions that held for 30 years.'
+      },
+      {
+        year: '1823',
+        title: 'Monroe Doctrine',
+        note: "It's common ball."
       },
       {
         year: '1824',
@@ -191,6 +201,11 @@ const UNITS = [
         year: '1869',
         title: 'Transcontinental Railroad completed',
         note: "The Golden Spike at Promontory Summit connects East and West coasts, transforming commerce and settlement while displacing Native Americans from the Great Plains."
+      },
+      {
+        year: '1882',
+        title: 'Chinese Exclusion Act',
+        note: "The first federal law to restrict immigration based on race or nationality, barring Chinese laborers and reflecting the nativist anxieties of the Gilded Age."
       },
       {
         year: '1877–94',
@@ -324,6 +339,11 @@ const UNITS = [
         year: '1991',
         title: 'Dissolution of the USSR',
         note: "The Soviet Union officially dissolves on December 25, 1991 — ending the Cold War and leaving the U.S. as the world's sole superpower."
+      },
+      {
+        year: '1994',
+        tile: 'NAFTA',
+        note: "Free trade agreement between the U.S., Canada, and Mexico that accelerated economic globalization, boosted trade, but also displaced American manufacturing workers."
       },
       {
         year: '2001',
