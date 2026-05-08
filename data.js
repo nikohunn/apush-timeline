@@ -342,7 +342,7 @@ const UNITS = [
       },
       {
         year: '1994',
-        tile: 'NAFTA',
+        title: 'NAFTA',
         note: "Free trade agreement between the U.S., Canada, and Mexico that accelerated economic globalization, boosted trade, but also displaced American manufacturing workers."
       },
       {
