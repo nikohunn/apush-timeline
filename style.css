@@ -1,0 +1,261 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #faf9f7;
+  --surface:      #ffffff;
+  --border:       rgba(0,0,0,0.10);
+  --border-hover: rgba(0,0,0,0.22);
+  --text-primary:   #1a1916;
+  --text-secondary: #6b6960;
+  --text-muted:     #9e9b92;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #171614;
+    --surface:      #1f1e1c;
+    --border:       rgba(255,255,255,0.10);
+    --border-hover: rgba(255,255,255,0.22);
+    --text-primary:   #f0ede8;
+    --text-secondary: #9e9b92;
+    --text-muted:     #6b6960;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap');
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.site-header {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+}
+.site-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.site-header p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ── Main layout ── */
+#timeline-root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem 5rem;
+}
+
+/* ── Unit section ── */
+.unit-section {
+  margin-bottom: 3rem;
+}
+
+.unit-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-left: 36px;
+}
+
+/* ── Timeline track ── */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  bottom: 4px;
+  width: 1.5px;
+  background: var(--border);
+}
+
+/* ── Event row ── */
+.event {
+  position: relative;
+  margin-bottom: 10px;
+  animation: fadeUp 0.35s ease both;
+}
+.event::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: var(--surface);
+  transition: transform 0.15s ease;
+}
+.event:has(.event-card.open)::before {
+  transform: scale(1.25);
+}
+
+/* ── Event card ── */
+.event-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  user-select: none;
+}
+.event-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.event-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.event-year {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  min-width: 44px;
+  flex-shrink: 0;
+}
+
+.event-title {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.45;
+  flex: 1;
+}
+
+.chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+.event-card.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Expanded note ── */
+.event-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+  display: none;
+}
+.event-card.open .event-note {
+  display: block;
+}
+
+/* ── Unit color themes ── */
+
+/* U1 — Purple */
+.u1 .unit-label { background: #EEEDFE; color: #3C3489; }
+.u1 .event::before { border-color: #7F77DD; }
+.u1 .event-year { color: #534AB7; }
+
+/* U2 — Teal */
+.u2 .unit-label { background: #E1F5EE; color: #085041; }
+.u2 .event::before { border-color: #1D9E75; }
+.u2 .event-year { color: #0F6E56; }
+
+/* U3 — Blue */
+.u3 .unit-label { background: #E6F1FB; color: #0C447C; }
+.u3 .event::before { border-color: #378ADD; }
+.u3 .event-year { color: #185FA5; }
+
+/* U4 — Amber */
+.u4 .unit-label { background: #FAEEDA; color: #633806; }
+.u4 .event::before { border-color: #EF9F27; }
+.u4 .event-year { color: #854F0B; }
+
+/* U5 — Coral */
+.u5 .unit-label { background: #FAECE7; color: #712B13; }
+.u5 .event::before { border-color: #D85A30; }
+.u5 .event-year { color: #993C1D; }
+
+/* U6 — Pink */
+.u6 .unit-label { background: #FBEAF0; color: #72243E; }
+.u6 .event::before { border-color: #D4537E; }
+.u6 .event-year { color: #993556; }
+
+/* U7 — Green */
+.u7 .unit-label { background: #EAF3DE; color: #27500A; }
+.u7 .event::before { border-color: #639922; }
+.u7 .event-year { color: #3B6D11; }
+
+/* U8 — Red */
+.u8 .unit-label { background: #FCEBEB; color: #791F1F; }
+.u8 .event::before { border-color: #E24B4A; }
+.u8 .event-year { color: #A32D2D; }
+
+/* U9 — Gray */
+.u9 .unit-label { background: #F1EFE8; color: #444441; }
+.u9 .event::before { border-color: #888780; }
+.u9 .event-year { color: #5F5E5A; }
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .u1 .unit-label { background: #26215C; color: #CECBF6; }
+  .u1 .event-year { color: #AFA9EC; }
+  .u2 .unit-label { background: #04342C; color: #9FE1CB; }
+  .u2 .event-year { color: #5DCAA5; }
+  .u3 .unit-label { background: #042C53; color: #B5D4F4; }
+  .u3 .event-year { color: #85B7EB; }
+  .u4 .unit-label { background: #412402; color: #FAC775; }
+  .u4 .event-year { color: #EF9F27; }
+  .u5 .unit-label { background: #4A1B0C; color: #F5C4B3; }
+  .u5 .event-year { color: #F0997B; }
+  .u6 .unit-label { background: #4B1528; color: #F4C0D1; }
+  .u6 .event-year { color: #ED93B1; }
+  .u7 .unit-label { background: #173404; color: #C0DD97; }
+  .u7 .event-year { color: #97C459; }
+  .u8 .unit-label { background: #501313; color: #F7C1C1; }
+  .u8 .event-year { color: #F09595; }
+  .u9 .unit-label { background: #2C2C2A; color: #D3D1C7; }
+  .u9 .event-year { color: #B4B2A9; }
+}
+
+/* ── Animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
