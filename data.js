@@ -254,7 +254,7 @@ const UNITS = [
         note: "The Great Depression begins, discrediting hands-off economic policy and setting the stage for massive federal intervention through the New Deal."
       },
       {
-        year: '1930',
+        year: '1930s',
         title: 'Neutrality Acts',
         note: "Congress passes a series of acts prohibiting arms sales and loans to warring nations — reflecting strong isolationist sentiment as Europe edges toward another world war."
       },
